@@ -6,7 +6,7 @@ Create database snowdemo;
 
 Use database snowdemo;
 
-##Create Schema for the Source Data
+## Create Schema for the Source Data
 Create schema ODS;
 
 create or replace TABLE ODS.ODS_EVENTS 
@@ -27,7 +27,7 @@ cluster by LINEAR(CREATED)(
 	TYPE STRING
 )COMMENT='Created for Zero to Snowflake'
 ;
-##Create warehouse using the UI
+## Create warehouse using the UI
 Use warehouse DEMO_WH;
 
 copy into ODS.ODS_EVENTS
@@ -39,11 +39,11 @@ FILE_FORMAT= (type=CSV
              )
 ON_ERROR=CONTINUE;
 
-
+```sql
 select *
 From ODS.ODS_EVENTS
 Limit 10;
-
+```
 
 create or replace TABLE ODS.ODS_EVENTS_PAR
 (json_data variant)
