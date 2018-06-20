@@ -7,7 +7,7 @@ see documentation [here](Load-Data.MD)
 
 
 
-## Step 2 - Load Data
+## Step 2 - Data Extract & Load
 
 see documentation [here](data-extract-and-load.MD)
 
