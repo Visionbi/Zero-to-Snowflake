@@ -2,9 +2,11 @@
 Get started scripts with Snowflake - Build for the Cloud Data Warehouse
 
 ## Create A new Database
+```sql
 Create database snowdemo;
 
 Use database snowdemo;
+```
 
 ## Create Schema for the Source Data
 ```sql
