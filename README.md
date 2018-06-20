@@ -7,8 +7,10 @@ Create database snowdemo;
 Use database snowdemo;
 
 ## Create Schema for the Source Data
+```sql
 Create schema ODS;
-
+```
+```sql
 create or replace TABLE ODS.ODS_EVENTS 
 cluster by LINEAR(CREATED)(
 	UPDATED TIMESTAMP_NTZ(9),
@@ -27,6 +29,7 @@ cluster by LINEAR(CREATED)(
 	TYPE STRING
 )COMMENT='Created for Zero to Snowflake'
 ;
+```
 ## Copy Data from S3
 * Create warehouse using the UI
 ```sql
