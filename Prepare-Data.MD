@@ -1,6 +1,6 @@
 ## Create A new Bucket on S3
 1. Create a new bucket
-2. Create the following folders snowdemo/source_data
+2. Create the following folders Snowdemo/source_data
 
 ## Download data from Snowflake Sample Data
 The database Snowflake_Sample_Data has different great datasets to play with.
