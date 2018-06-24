@@ -37,7 +37,7 @@ Limit 100;
 
 Download:
 ```sql
-copy into s3://snowflake-visionbi-demo/sample_data/weather_json/
+copy into s3://<Bucket_Name>/Snowdemo/sample_data/weather_json/
 from (Select V From Snowflake_Sample_Data.Weather.DAILY_14_TOTAL)
 credentials = (AWS_KEY_ID='...' 
                AWS_SECRET_KEY='...')
