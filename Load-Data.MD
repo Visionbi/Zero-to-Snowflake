@@ -67,7 +67,7 @@ Limit 10;
 # Load Semi-Structured Data
 The following example will load a Parquet data. The exact same commands and method will be used for Json data. 
 More options can be used on the copy command and it is very easy to find them on Snowflake documentation on google.
-Loading Json \ Semi-structured data into a structured data is done in 2 steps. First you'll load the data into a single column table (varient column) and then using an Insert into command.
+Loading Json \ Semi-structured data into a structured table is done in 2 steps. First you'll load the data into a single column table (varient column) and then using an Insert into command.
 Please notice that the Json data is indexed and saved in an optimized way, so you can consider to keep it in it's original format and extract only when data is required.
 
 ## Load Parquet Files
