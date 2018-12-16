@@ -97,6 +97,26 @@ From ODS.ODS_WEATHER_DATA
 Limit 10;
 ```
 
+
+## Load Data Using Stage
+To avoid sharing and using the access and secret key on each query, you can create a STAGE once, and then execute the copy commands from that STAGE
+###Create STAGE
+```sql
+create or replace STAGE SNOWSTAGE
+    url='s3://snowflake-visionbi-demo/sample_data'
+    credentials = (AWS_KEY_ID='...' 
+                   AWS_SECRET_KEY='...' )
+    FILE_FORMAT = (type=PARQUET);
+```
+###Load From Stage
+```sql
+create or replace table ODS.events_par_stage (json_data  variant);
+
+copy into ODS.events_par_stage
+from     @SNOWSTAGE/events_par;
+```
+
+
 ### Quering Semi-Structure data
 Use <column-name>:<attribute> to query the data
 	
@@ -106,3 +126,14 @@ From ODS.ODS_WEATHER_DATA
 Limit 10;
 ```
 
+## Tips & Tricks
+
+### Add metadata column on the copy command
+Can be used to add insertion time, or source system when looping over many sources to create a unified table. Or to extract part of the Json data to a seperate column on the copy.
+```sql
+copy into ODS.events_par_stage
+from (
+	  select $1,current_timestamp(),parse_json($1):EventStartTime::bigint
+  from @SNOWSTAGE/events_par)
+file_format = 'FILE_FORMAT';
+```
