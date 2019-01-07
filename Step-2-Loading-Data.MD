@@ -97,7 +97,6 @@ From ODS.ODS_WEATHER_DATA
 Limit 10;
 ```
 
-
 ## Load Data Using Stage
 To avoid sharing and using the access and secret key on each query, you can create a STAGE once, and then execute the copy commands from that STAGE
 ###Create STAGE
@@ -115,7 +114,6 @@ create or replace table ODS.events_par_stage (json_data  variant);
 copy into ODS.events_par_stage
 from     @SNOWSTAGE/events_par;
 ```
-
 
 ### Quering Semi-Structure data
 Use <column-name>:<attribute> to query the data

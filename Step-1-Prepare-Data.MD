@@ -20,6 +20,7 @@ FILE_FORMAT = (type=CSV)
 OVERWRITE=TRUE;
 ```
 -(30 Seconds on a Large WH)
+--(Resize the WH to Large for the loading, then resize it back to X-Small)
 
 *The folder orders_csv will be created automatically
 **Make sure to add the / at the end in order to save the data in a new folder. Otherwise it will be a prefix of the output files.
@@ -45,6 +46,8 @@ FILE_FORMAT = (type=JSON)
 OVERWRITE=TRUE;
 ```
 -(1:40 Minutes on Large WH)
+--(Resize the WH to Large for the loading, then resize it back to X-Small)
+
 
 
 ### Sample Parquet
@@ -68,6 +71,7 @@ FILE_FORMAT = (type=PARQUET)
 OVERWRITE=TRUE;
 ```
 -(1:40 Minutes on Large WH | 35,653,339 Rows | 35.5 Gb )
+--(Resize the WH to Large for the loading, then resize it back to X-Small)
 
 
 **REMEMBER TO DELETE THE FOLDERS WHEN YOU COMPLETE THE DEMO TO AVOID S3 CHARGES
