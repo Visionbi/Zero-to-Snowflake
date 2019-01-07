@@ -47,4 +47,27 @@ OVERWRITE=TRUE;
 -(1:40 Minutes on Large WH)
 
 
+### Sample Parquet
+Download Weather.DAILY_14_TOTAL table into S3 in PARQUET format. This COPY\UNLOAD option is very powerfull when you need to migrate data from Json to Parquet.:
+
+In this case we will use "Select V From ..." when V is the Json column in the table. 
+You can query the source table to see the json data:
+```sql
+Select *
+From Snowflake_Sample_Data.Weather.DAILY_14_TOTAL
+Limit 100;
+```
+
+Download:
+```sql
+copy into s3://<Bucket_Name>/Snowdemo/sample_data/weather_json/
+from (Select V From Snowflake_Sample_Data.Weather.DAILY_14_TOTAL)
+credentials = (AWS_KEY_ID='...' 
+               AWS_SECRET_KEY='...')
+FILE_FORMAT = (type=PARQUET)
+OVERWRITE=TRUE;
+```
+-(1:40 Minutes on Large WH | 35,653,339 Rows | 35.5 Gb )
+
+
 **REMEMBER TO DELETE THE FOLDERS WHEN YOU COMPLETE THE DEMO TO AVOID S3 CHARGES
