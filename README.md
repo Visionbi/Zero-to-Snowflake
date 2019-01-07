@@ -1,19 +1,20 @@
 # Zero-to-Snowflake
 Get started scripts with Snowflake - Build for the Cloud Data Warehouse
 
-## Step 0 - Prepare Data For The Demo
+## Step 1 - Prepare Data For The Demo
+Fisrt we will prepare some data. Snowflake includes a Sample database (Using their snowshare), we will use it for the demo, you'll need to prepare only a bucket with secret & access keys.
 
-see documentation [here](Prepare-Data.MD)
+see documentation [here](Step-1-Prepare-Data.MD)
 
-## Step 1 - Load Data
+## Step 2 - Load Data
 
-see documentation [here](Load-Data.MD)
+see documentation [here](Step-2-Loading-Data.MD)
 
 
 
-## Step 2 - Data Extract & Load
+## Step 3 - Data Extract & Load
 
-see documentation [here](data-extract-and-load.MD)
+see documentation [here](Step-3-data-extract-and-load.MD)
 
 
 
