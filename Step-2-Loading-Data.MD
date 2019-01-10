@@ -88,8 +88,8 @@ copy into ODS.ODS_WEATHER_DATA
 from s3://<bucket_name>/Snowdemo/sample_data/weather_json/
 credentials = (AWS_KEY_ID='...' 
                AWS_SECRET_KEY='...')
-//FILE_FORMAT = (type=PARQUET)
-FILE_FORMAT = (type=JSON)
+FILE_FORMAT = (type=PARQUET)
+//FILE_FORMAT = (type=JSON) //*To load Json data, all threst remain as is.
 ON_ERROR=CONTINUE;
 
 select *
