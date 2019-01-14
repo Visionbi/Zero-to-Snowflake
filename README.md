@@ -14,20 +14,19 @@ This repository of tips and tools is managed by [Vision.bi](https://vision.bi), 
 ## Step 1 - Prepare Data For The Demo
 Fisrt we will prepare some data. Snowflake includes a Sample database (Using their snowshare), we will use it for the demo, you'll need to prepare only a bucket with secret & access keys.
 
-see documentation [here](A-Tutorial/Step-1-Prepare-Data.MD)
+see documentation [here](/A-Tutorial/Step-1-Prepare-Data.MD)
 
 ## Step 2 - Load Data
 Use Copy from different sources as Parquet, CSV & Json.
 
-see documentation [here](A-Tutorial/Step-2-Loading-Data.MD)
-
+see documentation [here](/A-Tutorial/Step-2-Loading-Data.MD)
 
 
 ## Step 3 - Data Extract & Load
 Resize Warehouse, Extract data from Semi Structure, Merge and more...
-see documentation [here](A-Tutorial/Step-3-data-extract-and-load.MD)
+see documentation [here](/A-Tutorial/Step-3-data-extract-and-load.MD)
 
-## And More
+## And More...
 Explore tye repository for more examples, please fill free to ask for samples in the [issues section](https://github.com/Visionbi/Zero-to-Snowflake/issues)
 
 ###<i>Enjoy Snowflaking...</i>
