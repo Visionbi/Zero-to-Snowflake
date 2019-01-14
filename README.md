@@ -1,7 +1,7 @@
+![alt text](http://vision.bi/wp-content/uploads/2019/01/Snowflake_Computing-logo-e1547491263529.png "Snowflake Computing")
 
 
-# ![alt text](https://vision.bi/wp-content/uploads/2019/01/Snowflake_Computing-logo.png "Snowflake Computing") Zero-to-Snowflake
-
+#  Zero-to-Snowflake
 
 
 The scripts you need to get started with Snowflake, the enterprise data warehouse built for the cloud. 
