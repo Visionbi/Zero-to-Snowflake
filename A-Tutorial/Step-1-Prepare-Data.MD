@@ -20,10 +20,10 @@ FILE_FORMAT = (type=CSV)
 OVERWRITE=TRUE;
 ```
 -(30 Seconds on a Large WH)
---(Resize the WH to Large for the loading, then resize it back to X-Small)
+--(Resize the WH to Large for the unloading, then resize it back to X-Small)
 
 *The folder orders_csv will be created automatically
-**Make sure to add the / at the end in order to save the data in a new folder. Otherwise it will be a prefix of the output files.
+**Make sure **to add the / at the end** in order to save the data in a new folder. Otherwise it will be a prefix of the output files.
 
 ### Sample JSON
 Download Weather.DAILY_14_TOTAL table into S3 in JSON format:
