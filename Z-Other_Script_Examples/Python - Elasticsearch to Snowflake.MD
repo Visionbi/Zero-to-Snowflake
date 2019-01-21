@@ -9,6 +9,7 @@ import json
 import snowflake.connector
 from elasticsearch import Elasticsearch
 from elasticsearch.connection import RequestsHttpConnection
+import hashlib
 
 # Connecting to Snowflake using the default authenticator
 cnx = snowflake.connector.connect(
@@ -51,6 +52,13 @@ def load_index(_index_name, _doc_type):
         while scroll:
             vals = []
             for hit in res["hits"]["hits"]:
+                source = hit['_source']
+                #Hash Data
+                for att in ["hair_color","skin_color","eye_color"]:
+                    if att in source.keys():
+                        source.update({att:hashlib.sha256(source[att].encode()).hexdigest()})
+
+                hit['_source'] = source
                 vals.append("('" + json.dumps(hit) + "')")
                 # vals.append("('" + json.dumps(hit, default=json_util.default) + "')")
 
