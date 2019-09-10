@@ -11,7 +11,7 @@ The purpose of this repository is to help companies when they start using Snowfl
 The exercises/tasks can be done using SNOWFLAKE_SAMPLE_DATA database (you’ll see this sample database on your snowflake account). This means that there are no prerequisites, besides an S3 bucket with write permissions (Access_Key & Secret_Key)
 
 This repository of tips and tools is managed by [Vision.bi](https://vision.bi), Snowflake’s consulting and technology partner. For high-level consulting queries, you can contact us at [snowflake@vision.bi](mailto:snowflake@vision.bi)
-. Fill free to ask for specific example or ask questions at the [issues section](https://github.com/Visionbi/Zero-to-Snowflake/issues)
+. Feel free to ask for specific example or ask questions at the [issues section](https://github.com/Visionbi/Zero-to-Snowflake/issues)
 
 If you don't have an account you can start your trial [here](https://trial.snowflake.com/?utm_source=visionbi&utm_medium=referral&utm_campaign=visionbi-email&referredBy=visionbi-email)
 
