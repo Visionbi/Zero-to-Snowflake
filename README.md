@@ -20,7 +20,7 @@ If you don't have an account you can start your trial [here](https://trial.snowf
 
 
 ## Step 1 - Prepare Data For The Demo
-Fisrt we will prepare some data. Snowflake includes a Sample database (Using their snowshare), we will use it for the demo, you'll need to prepare only a bucket with secret & access keys.
+First we will prepare some data. Snowflake includes a Sample database (Using their snowshare), we will use it for the demo, you'll need to prepare only a bucket with secret & access keys.
 
 see documentation [here](/A-Tutorial/Step-1-Prepare-Data.MD)
 

@@ -8,19 +8,20 @@ We've selected 2 different sources: Weather Data (Json Format) and Orders Data (
 Follow the next steps to download the data into you S3 for the following steps in the demo.
 
 ### Sample CSV
-Download TPCH_SF1000.ORDERS table into S3 in CSV format:
+Download TPCH_SF100.ORDERS table into S3 in CSV format:
 
 
 ```sql
 copy into s3://<Bucket_Name>/Snowdemo/sample_data/orders_csv/
-from  Snowflake_Sample_Data.TPCH_SF1000.ORDERS
+from  Snowflake_Sample_Data.TPCH_SF100.ORDERS
 credentials = (AWS_KEY_ID='...' 
                AWS_SECRET_KEY='...')
 FILE_FORMAT = (type=CSV)
 OVERWRITE=TRUE;
 ```
--(30 Seconds on a Large WH)
---(Resize the WH to Large for the unloading, then resize it back to X-Small)
+- XS - 2m24s
+- L - 24s
+- (Resize the WH to Large for the unloading, then resize it back to X-Small)
 
 *The folder orders_csv will be created automatically
 **Make sure **to add the / at the end** in order to save the data in a new folder. Otherwise it will be a prefix of the output files.
@@ -45,8 +46,9 @@ credentials = (AWS_KEY_ID='...'
 FILE_FORMAT = (type=JSON)
 OVERWRITE=TRUE;
 ```
--(1:40 Minutes on Large WH)
---(Resize the WH to Large for the loading, then resize it back to X-Small)
+- XS - 17% in 3m55s
+- L - 2m34s 
+- (Resize the WH to Large for the loading, then resize it back to X-Small)
 
 
 
@@ -70,8 +72,8 @@ credentials = (AWS_KEY_ID='...'
 FILE_FORMAT = (type=PARQUET)
 OVERWRITE=TRUE;
 ```
--(1:40 Minutes on Large WH | 35,653,339 Rows | 35.5 Gb )
---(Resize the WH to Large for the loading, then resize it back to X-Small)
+- L - 2m16s | 35,653,339 Rows | 35.5 Gb 
+- (Resize the WH to Large for the loading, then resize it back to X-Small)
 
 
 **REMEMBER TO DELETE THE FOLDERS WHEN YOU COMPLETE THE DEMO TO AVOID S3 CHARGES

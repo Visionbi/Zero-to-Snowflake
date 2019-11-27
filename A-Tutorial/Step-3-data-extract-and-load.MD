@@ -14,10 +14,11 @@ USE WAREHOUSE DEMO_WH;
 show warehouses;
 Use database snowdemo;
 ```
+
 ```sql
 create or replace TABLE ODS.ODS_WEB_EVENTS_OBJ
 (json_data variant)
-COMMENT='Thanks you to Cignal.io'
+COMMENT='Thanks to Cignal.io'
 ;
 ```
 ```sql
