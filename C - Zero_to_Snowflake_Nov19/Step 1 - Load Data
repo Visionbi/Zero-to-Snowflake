@@ -111,8 +111,8 @@ use schema ODS;
 //Create stage on S3
 create or replace STAGE KAFKA_TOPICS
     url='s3://snowflake-visionbi-demo-us/topics'
-    credentials = (AWS_KEY_ID='...'
-               AWS_SECRET_KEY='...')
+    credentials = (AWS_KEY_ID='AKIAIABYSR2SWFOV2K7Q'
+               AWS_SECRET_KEY='nWm3xDPDTDnSBFQZKz0Fn1ZCz0eQ4VDxhKd8WoXw')
     FILE_FORMAT = (type=JSON);
 
 create or replace TABLE ODS.ODS_EVENTS_PIPE (json_data variant, insertion_ts timestamp_LTZ)
@@ -157,7 +157,30 @@ order by 1 desc
 limit 100;
 
 
+//SHOW S3 BY MINUTES
+Select TO_VARCHAR(dateadd(hour, 10, JSON_DATA:ext:timestamp::int::timestamp ),'yyyy-mm-dd hh:mi') DATA_TS,
+TO_VARCHAR(dateadd(hour, 10, INSERTION_TS ),'yyyy-mm-dd hh:mi') INSERT_TS,
+count(*)
+From (
+Select JSON_DATA,INSERTION_TS
+from ODS.ODS_EVENTS_PIPE
+)a
+Where DATA_TS='2019-11-28 15:11'
+Group by 1,2
+order by 1 desc
+limit 100;
 
 
+
+
+create or replace stream ODS.ODS_EVENTS_STREAM on table ODS.ODS_EVENTS_PIPE;
+;
+
+Select *
+From  ODS.ODS_EVENTS_STREAM
+;
+
+//READ MORE ABOUT STREAMS
+//https://docs.snowflake.net/manuals/user-guide/streams.html
 
 

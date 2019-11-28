@@ -1,0 +1,67 @@
+use role SNOWDEMO_ROLE;
+use warehouse SNOWDEMO_WH;
+
+ALTER SESSION SET USE_CACHED_RESULT=FALSE;
+
+Select *
+From "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1000"."ORDERS"
+limit 100;
+
+ALTER WAREHOUSE "SNOWDEMO_WH" SET WAREHOUSE_SIZE = 'XSMALL';
+
+use role SNOWDEMO_ROLE;
+Select O_ORDERPRIORITY,O_ORDERSTATUS,O_ORDERPRIORITY,count(*)
+From "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1000"."ORDERS"
+Where O_ORDERSTATUS = 'F' and O_TOTALPRICE > RANDOM()
+Group by 1,2,3
+order by 4 desc
+limit 100;
+
+USE ROLE SYSADMIN;
+ALTER WAREHOUSE "SNOWDEMO_WH" SET WAREHOUSE_SIZE = 'LARGE';
+//RERUN QUERY
+
+
+//SCALE HORISONTALLY - PREMIER FEATURE
+
+
+
+//SEMI-STRUCTURE DATA
+Select JSON_DATA
+From "SNOWDEMO"."ODS"."ODS_EVENTS_PIPE";
+
+
+//WORKING WITH SEMI-STRUCTURE DATA
+Select JSON_DATA:ext:timestamp::int::datetime event_dt,
+JSON_DATA:ext:uid::STRING uid,
+JSON_DATA:ext:summery:status::STRING summery
+//,JSON_DATA:seatbid[0]:bid[0]:type::STRING type
+//,*
+From "SNOWDEMO"."ODS"."ODS_EVENTS_PIPE";
+
+//EXTRACT FROM ARRAY
+Select JSON_DATA:ext:timestamp::int::datetime event_dt,
+JSON_DATA:ext:uid::STRING uid,
+JSON_DATA:ext:summery:status::STRING summery,
+JSON_DATA:seatbid[0]:bid[0]:type::STRING type,
+f.value,
+f.value:bid,
+f.*
+From "SNOWDEMO"."ODS"."ODS_EVENTS_PIPE",
+table(flatten(input => JSON_DATA:seatbid)) f
+;
+
+//EXTRACT FROM 2 NESTED ARRAYS
+Select JSON_DATA:ext:timestamp::int::datetime event_dt,
+JSON_DATA:ext:uid::STRING uid,
+JSON_DATA:ext:summery:status::STRING summery,
+JSON_DATA:seatbid[0]:bid[0]:type::STRING type,
+f.value,
+f2.value:type::STRING SECOND_NESTED_TYPE
+//,*
+From "SNOWDEMO"."ODS"."ODS_EVENTS_PIPE",
+table(flatten(input => JSON_DATA:seatbid)) f,
+table(flatten(input => f.value:bid)) f2
+;
+
+
