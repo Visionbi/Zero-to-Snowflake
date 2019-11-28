@@ -1,0 +1,65 @@
+use role SNOWDEMO_ROLE;
+USE WAREHOUSE SNOWDEMO_WH;
+Use database snowdemo;
+
+Create or replace table SNOWDEMO.DWH.FACT_EVENTS as
+Select JSON_DATA:ext:timestamp::int::datetime event_dt,
+JSON_DATA:ext:uid::STRING uid,
+JSON_DATA:ext:summery:status::STRING summery,
+JSON_DATA:seatbid[0]:bid[0]:type::STRING type,
+f2.value:type::STRING SECOND_NESTED_TYPE
+from SNOWDEMO.ODS.ODS_EVENTS_PIPE,
+table(flatten(input => JSON_DATA:seatbid)) f,
+table(flatten(input => f.value:bid)) f2
+;
+
+Select *
+from SNOWDEMO.DWH.FACT_EVENTS
+where TYPE='Mobile';
+
+
+delete //Select *
+from SNOWDEMO.DWH.FACT_EVENTS
+where TYPE='Mobile';
+
+Select *
+from SNOWDEMO.DWH.FACT_EVENTS
+where TYPE='Mobile';
+
+
+
+
+//Time travel!
+Select *
+from SNOWDEMO.DWH.FACT_EVENTS  AT (offset => -60*1)
+where TYPE='Mobile';
+
+
+//Let's truncate data
+truncate table SNOWDEMO.DWH.FACT_EVENTS;
+
+Select *
+from SNOWDEMO.DWH.FACT_EVENTS  AT (offset => -60*1)
+;
+
+drop table SNOWDEMO.DWH.FACT_EVENTS;
+
+undrop table SNOWDEMO.DWH.FACT_EVENTS;
+
+use schema DWH;
+undrop table FACT_EVENTS;
+
+Select *
+from SNOWDEMO.DWH.FACT_EVENTS
+ AT (offset => -60*3)
+ ;
+Create or replace table  SNOWDEMO.DWH.FACT_EVENTS_RESTORED clone  SNOWDEMO.DWH.FACT_EVENTS AT (offset => -60*6)
+;
+Select *
+From SNOWDEMO.DWH.FACT_EVENTS_RESTORED
+Where TYPE ='Mobile';
+
+
+
+
+
